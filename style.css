@@ -1,0 +1,91 @@
+[x-cloak] { display: none !important; }
+
+/* Adiciona uma rolagem suave em todo o site */
+html { scroll-behavior: smooth; }
+
+.summary-card::before{content:'↗';position:absolute;right:.65rem;top:.55rem;font-size:.9rem;font-weight:800;line-height:1;opacity:.62}
+
+/* Oculta apenas a barra da rolagem da página; a rolagem do documento permanece ativa. */
+html,body{scrollbar-width:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+
+@media(min-width:1024px){.summary-panel,.category-panel{height:252px}.category-panel__scroll{min-height:0}}.category-panel__scroll{overscroll-behavior:contain}@media(max-width:1023px){.category-panel__scroll{max-height:320px}}
+
+/* Oculta visualmente apenas a barra vertical da tabela de categorias no desktop, mantendo a rolagem ativa. */
+@media(min-width:1024px){
+  .category-panel__scroll{scrollbar-width:none;-ms-overflow-style:none}
+  .category-panel__scroll::-webkit-scrollbar{display:none;width:0;height:0}
+}
+
+/* Amplia a interface somente em telas de TV, reduzindo as margens laterais excessivas. */
+@media(min-width:1920px){
+  header > div,
+  main{max-width:none;width:92%}
+}
+
+/* Ajuste exclusivo da tabela de categorias em telas menores */
+@media(max-width:1023px){
+  .category-panel__scroll{overflow-x:hidden}
+  .category-panel__scroll table{table-layout:auto;width:100%;min-width:0}
+  .category-panel__scroll th:first-child,
+  .category-panel__scroll td:first-child{width:48%;min-width:0}
+  .category-panel__scroll th:not(:first-child),
+  .category-panel__scroll td:not(:first-child){width:17.33%;white-space:nowrap}
+  .category-panel__scroll th:first-child{white-space:normal;overflow-wrap:normal;word-break:normal}
+  .category-panel__scroll td:first-child p{white-space:normal;overflow-wrap:normal;word-break:normal}
+}
+
+/* Ajustes finais exclusivos do mobile: header e rolagem horizontal da tabela */
+@media(max-width:1023px){
+  html,body{overflow-x:hidden}
+  header > div{width:100%;min-width:0}
+  header > div > div:first-child{min-width:0;flex:1;gap:.5rem}
+  header > div > div:first-child img{flex:0 0 auto}
+  header > div > div:first-child > div{min-width:0;flex:1}
+  header > div > div:first-child h1{white-space:nowrap;overflow:visible;text-overflow:clip;font-size:.875rem!important;line-height:1.25;letter-spacing:-.02em}
+  header > div > div:last-child{flex:0 0 auto;gap:.25rem}
+  header > div > div:last-child button{flex:0 0 2.25rem;width:2.25rem}
+  header > div > div:last-child button svg{flex:0 0 auto}
+
+  .category-panel__scroll{overflow-x:auto;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .category-panel__scroll table{table-layout:fixed;width:520px;min-width:520px}
+  .category-panel__scroll th:first-child,
+  .category-panel__scroll td:first-child{width:200px;padding-left:.75rem;padding-right:.75rem}
+  .category-panel__scroll th:not(:first-child),
+  .category-panel__scroll td:not(:first-child){width:106.66px;padding-left:.5rem;padding-right:.5rem}
+  .category-panel__scroll thead{font-size:.58rem}
+  .category-panel__scroll th:first-child{white-space:nowrap;overflow-wrap:normal;word-break:normal}
+  .category-panel__scroll td:first-child p{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-size:.8rem}
+  .category-panel__scroll td:not(:first-child) span{font-size:1rem}
+}
+
+/* Compactação exclusiva do card Por Categoria no mobile */
+@media(max-width:1023px){
+  .category-panel > div:first-child{padding:.75rem 1rem}
+  .category-panel__scroll{overflow-x:hidden;overflow-y:auto}
+  .category-panel__scroll table{table-layout:fixed;width:100%;min-width:0}
+  .category-panel__scroll thead{font-size:.55rem;letter-spacing:.04em}
+  .category-panel__scroll th:first-child,
+  .category-panel__scroll td:first-child{width:48%;padding:.45rem .65rem}
+  .category-panel__scroll th:not(:first-child),
+  .category-panel__scroll td:not(:first-child){width:17.33%;padding:.45rem .25rem;white-space:nowrap}
+  .category-panel__scroll th:not(:first-child){width:17.33%;padding:.45rem .4rem;white-space:nowrap;letter-spacing:.02em}
+  .category-panel__scroll thead th:nth-child(3){transform:translateX(.2rem)}
+  .category-panel__scroll th:first-child{white-space:normal;overflow-wrap:normal;word-break:normal}
+  .category-panel__scroll td:first-child p{white-space:normal;overflow-wrap:normal;word-break:normal;font-size:.75rem;line-height:1.2}
+  .category-panel__scroll td:not(:first-child) span{padding:.2rem .35rem;font-size:.85rem;line-height:1.1}
+}
+
+/* Resumo visual de documentos */
+.summary-visible-badge{display:inline-flex;align-items:center;gap:.35rem;border:1px solid #dbeafe;border-radius:999px;background:#eff6ff;color:#2563eb;padding:.35rem .6rem;font-size:.7rem;font-weight:700;white-space:nowrap}.summary-visible-badge svg{width:.85rem;height:.85rem}.summary-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem}.summary-card{position:relative;min-width:0;overflow:hidden;border-radius:.8rem;padding:.7rem .75rem .8rem;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}.summary-card:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,23,42,.08)}.summary-card::after{content:'';position:absolute;left:-8%;right:-8%;bottom:-13px;height:27px;border-radius:50% 50% 0 0;background:rgba(255,255,255,.38);transform:rotate(-3deg)}.summary-card__icon{display:grid;place-items:center;width:1.6rem;height:1.6rem;margin-bottom:.45rem;border-radius:.5rem;background:rgba(255,255,255,.62)}.summary-card__icon svg{width:.9rem;height:.9rem}.summary-card__label{position:relative;z-index:1;font-size:.63rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.summary-card__value{position:relative;z-index:1;margin-top:.15rem;font-size:1.45rem;line-height:1;font-weight:800;letter-spacing:-.04em}.summary-card__percent{position:relative;z-index:1;margin-top:.35rem;font-size:.58rem;font-weight:600;opacity:.8}.summary-card--green{background:#dcfce7;color:#047857}.summary-card--amber{background:#fef3c7;color:#b45309}.summary-card--rose{background:#ffe4e6;color:#be123c}.summary-card--blue{background:#dbeafe;color:#1d4ed8}@media(max-width:640px){.summary-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Ajuste tipográfico exclusivo do conteúdo do card Por Categoria. */
+.category-panel--compact-text h2{font-size:.8125rem}
+.category-panel--compact-text thead{font-size:.5rem}
+.category-panel--compact-text td:first-child p{font-size:.7rem}
+.category-panel--compact-text td:not(:first-child) span{font-size:.8rem}
+@media(min-width:640px){
+  .category-panel--compact-text thead{font-size:.6875rem}
+  .category-panel--compact-text td:first-child p{font-size:.875rem}
+  .category-panel--compact-text td:not(:first-child) span{font-size:1rem}
+}
